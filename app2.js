@@ -20,7 +20,8 @@ function updateQuantityPrice(product, isIncreasing, price){
     }
 
     // update subtotal
-    document.getElementById('sub-total').innerText = totalPrice();
+    totalPrice();
+    
 
 }
 
@@ -29,12 +30,15 @@ function getInput (product){
     const productInputNumber = parseInt(productInput.value);
     return productInputNumber;
 }
-
 function totalPrice(){
     const caseTotal = getInput('case') * 59;
     const phoneTotal = getInput('phone') * 1219;
     const total = caseTotal + phoneTotal;
-    return total;
+    const tax = total / 10;
+    const totalp = total + tax;
+    document.getElementById('sub-total').innerText = total;
+    document.getElementById('tax').innerText = tax;
+    document.getElementById('total').innerText = totalp;
 }
 
 
